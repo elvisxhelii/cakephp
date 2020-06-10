@@ -41,11 +41,11 @@ class User extends Entity
      *
      * @var array
      */
-    // protected function _setPassword($password) 
-    // {
-    //     if (strlen($password) > 0) {
+    protected function _setPassword($password) 
+    {
+        if (strlen($password) > 0) {
 
-    //         return (new DefaultPasswordHasher)->hash($password);
-    //     }
-    // }
+            return (new DefaultPasswordHasher)->hash($password);
+        }
+    }
 }
