@@ -83,9 +83,10 @@ class UsersTable extends Table
             ->notEmptyString('encrypted_password');
 
         $validator
-            ->dateTime('created_at')
+            ->scalar('created_at')
+            ->maxLength('created_at', 191)
             ->requirePresence('created_at', 'create')
-            ->notEmptyDateTime('created_at');
+            ->notEmptyString('created_at');
 
         return $validator;
     }

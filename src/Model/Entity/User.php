@@ -13,8 +13,8 @@ use Cake\Auth\DefaultPasswordHasher;
  * @property string $username
  * @property string $email
  * @property string $password
- * @property string $enc_password
- * @property \Cake\I18n\FrozenTime $created_at
+ * @property string $encrypted_password
+ * @property string $created_at
  */
 class User extends Entity
 {
@@ -28,19 +28,25 @@ class User extends Entity
      * @var array
      */
     protected $_accessible = [
-        '*' => true,
-        'id' => false
+        'firstname' => true,
+        'lastname' => true,
+        'username' => true,
+        'email' => true,
+        'password' => true,
+        'encrypted_password' => true,
+        'created_at' => true,
     ];
-
-    protected $_hidden = [
-    'password'
-];
 
     /**
      * Fields that are excluded from JSON versions of the entity.
      *
      * @var array
      */
+    protected $_hidden = [
+        'password',
+    ];
+
+
     protected function _setPassword($password) 
     {
         if (strlen($password) > 0) {

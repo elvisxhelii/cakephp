@@ -1,52 +1,65 @@
 <?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\User $user
- */
+$this->extend('../Layout/TwitterBootstrap/dashboard');
+
+
+$this->start('tb_actions');
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit User'), ['action' => 'edit', $user->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?> </li>
-    </ul>
-</nav>
-<div class="users view large-9 medium-8 columns content">
-    <h3><?= h($user->id) ?></h3>
-    <table class="vertical-table">
+<li><?= $this->Html->link(__('Edit User'), ['action' => 'edit', $user->id]) ?> </li>
+<li><?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?> </li>
+<li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?> </li>
+<li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?> </li>
+<?php
+$this->end();
+
+$this->start('tb_sidebar');
+?>
+<ul class="nav nav-sidebar">
+<li><?= $this->Html->link(__('Edit User'), ['action' => 'edit', $user->id]) ?> </li>
+<li><?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?> </li>
+<li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?> </li>
+<li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?> </li>
+</ul>
+<?php
+$this->end();
+?>
+<div class="panel panel-default">
+    <!-- Panel header -->
+    <div class="panel-heading">
+        <h3 class="panel-title"><?= h($user->id) ?></h3>
+    </div>
+    <table class="table table-striped" cellpadding="0" cellspacing="0">
         <tr>
-            <th scope="row"><?= __('Firstname') ?></th>
+            <td><?= __('Firstname') ?></td>
             <td><?= h($user->firstname) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Lastname') ?></th>
+            <td><?= __('Lastname') ?></td>
             <td><?= h($user->lastname) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Username') ?></th>
+            <td><?= __('Username') ?></td>
             <td><?= h($user->username) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Email') ?></th>
+            <td><?= __('Email') ?></td>
             <td><?= h($user->email) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Password') ?></th>
+            <td><?= __('Password') ?></td>
             <td><?= h($user->password) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Enc Password') ?></th>
-            <td><?= h($user->enc_password) ?></td>
+            <td><?= __('Encrypted Password') ?></td>
+            <td><?= h($user->encrypted_password) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($user->id) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Created At') ?></th>
+            <td><?= __('Created At') ?></td>
             <td><?= h($user->created_at) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Id') ?></td>
+            <td><?= $this->Number->format($user->id) ?></td>
         </tr>
     </table>
 </div>
+
